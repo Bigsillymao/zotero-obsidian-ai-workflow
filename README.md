@@ -1,5 +1,7 @@
 # Zotero + Obsidian + AI 科研知识工作流
 
+> 🌐 [English](README_EN.md) | 简体中文
+
 **一套把文献变成知识、把数据变成图、把资料变成可读文本的科研工作流。**
 以 AI（Claude Code / ZCode 等助手）为中间层，Zotero 为文献入口，Obsidian 为长期知识库，
 外加两条配套流水线：科研出图（Origin）与文件格式转换（→ Markdown）。
@@ -160,18 +162,6 @@ AI 助手使用前先读它，缺失时主动询问用户。
 环境：Windows 11 + PowerShell 5.1 / Git Bash；Zotero 9.0.x；Origin 2017；MinerU 4.0.12。
 
 > 诚实声明：以上为发布时的实况快照；换到新环境后，以新环境的实测结果为准。
-
-## English Overview
-
-A research knowledge workflow with an AI assistant in the middle:
-**Zotero (literature) ⇄ AI ⇄ Obsidian (vault)**, plus an Origin-only figure pipeline
-(export → verify → archive to three places → embed into the vault) and a document
-conversion skill (PDF/Office/spreadsheets → Markdown before reading).
-
-Organized as Agent Skills: clone into your assistant's skills directory, copy
-`LOCAL-CONFIG.example.md` to `LOCAL-CONFIG.md` and fill in your paths, then start from
-the root `SKILL.md`, which routes to `skills/{zotero-ops, vault-ops, figure-pipeline, doc-to-md}`.
-Check `README.md` → "版本差异与兼容" for version-specific behavior (Zotero 7/9, Obsidian Bases 1.9+, Origin 2017 vs 2021+).
 
 ## License
 

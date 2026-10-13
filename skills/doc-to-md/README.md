@@ -1,5 +1,7 @@
 # doc-to-md
 
+> 🌐 [English](README_EN.md) | 简体中文
+
 **让 AI 先"读懂"，再回答：把 PDF / 扫描件 / Office / 表格先转成 Markdown，再交给模型阅读。**
 
 一个通用 [Agent Skill](https://code.claude.com/docs/en/skills)（Claude Code / ZCode 等 agent 加载 `SKILL.md` 即用），
@@ -35,8 +37,8 @@ mineru server start        # 每次开机后启动本地解析服务（flash 档
 **2. 本技能**：把本仓库放进 agent 的 skills 目录，例如：
 
 ```bash
-git clone https://github.com/Bigsillymao/zotero-obsidian-ai-workflow ~/.zcode/skills/doc-to-md     # ZCode
-git clone https://github.com/Bigsillymao/zotero-obsidian-ai-workflow ~/.claude/skills/doc-to-md    # Claude Code
+git clone https://github.com/Bigsillymao/doc-to-md ~/.zcode/skills/doc-to-md     # ZCode
+git clone https://github.com/Bigsillymao/doc-to-md ~/.claude/skills/doc-to-md    # Claude Code
 ```
 
 也可以不装技能，直接把 `scripts/` 当普通命令行工具用。
@@ -81,6 +83,7 @@ python scripts/xlsx-to-md.py data.csv
 | --- | --- |
 | `Local parse-server is disabled` | 本地解析服务没起：`mineru server start`（每次开机一次） |
 | `mineru not found` | 没装或不在 PATH：`pip install "mineru[core]"`；或设 `MINERU_EXE` 指定 |
+| 装了 MinerU 但参数不认（如 `-p`/`-o` 全局参数） | 3.x 及更早版本的 CLI 与 4.x 不同：`mineru --version` 确认；本仓库按 4.x 子命令式编写，旧版请升级（`pip install -U "mineru[core]"`） |
 | `.ps1` 中文乱码 / 报奇怪的错 | PowerShell 5.1 把无 BOM 的 UTF-8 当 GBK 读：脚本内容保持纯 ASCII |
 | 真 `.xls` 转出空表 | 老二进制格式不直接支持：`soffice --headless --convert-to xlsx` 先转 |
 | `.xls` 打开是网页源码 | 系统导出的是 HTML 伪装 `.xls`：本仓库脚本已自动识别处理 |
@@ -100,21 +103,6 @@ python scripts/xlsx-to-md.py data.csv
 - flash 档首次使用会从 modelscope 下载模型（实测约 226 MB，缓存在 `~/.mineru/models/`），之后离线秒级
 - `to-md.sh` 在 Git Bash 实测通过；Linux / macOS 未实测（仅包装同一 CLI）
 - 自测样例可再生成：`python tests/make_test_files.py`（PDF 样例需 LibreOffice 或自备 PDF）。⚠ 测试产物目录 `tests/_fixtures/` 已在 `.gitignore` 中——**不要提交或上传测试产物**（二进制样例可能带转换工具写入的文档属性）
-
-## English Quick Start
-
-A portable Agent Skill + CLI wrappers that convert documents to Markdown **before** an LLM reads them.
-
-```bash
-pip install "mineru[core]" && mineru server start     # parse server: once per boot
-./scripts/to-md.sh paper.pdf                          # -> paper_md.md (page markers, tables kept)
-./scripts/to-md.sh paper.pdf -t standard -p '1-5'     # higher quality tier, first 5 pages
-python scripts/xlsx-to-md.py data.xlsx                # also .csv and HTML-masqueraded .xls
-```
-
-- Tiers: `flash` (default, offline) | `basic` | `standard` | `advanced` (models download on first use)
-- `MINERU_EXE` overrides the mineru path; `MINERU_MODEL_SOURCE` switches the model mirror (default `modelscope`)
-- Numbers in the generated Markdown are for reading only — verify against the source file before formal use.
 
 ## License
 
