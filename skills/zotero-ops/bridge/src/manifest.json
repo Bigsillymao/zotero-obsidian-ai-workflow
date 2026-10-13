@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "ZCode Bridge",
+  "version": "0.1.0",
+  "description": "Local HTTP bridge (/zcode/*) that lets the ZCode agent fully operate this Zotero library: items (create/update/delete), collections, tags, and local file attachments.",
+  "author": "ZCode",
+  "applications": {
+    "zotero": {
+      "id": "zcode-bridge@zcode.local",
+      "strict_min_version": "6.999",
+      "strict_max_version": "10.*",
+      "update_url": "https://zcode.invalid/updates.json"
+    }
+  }
+}

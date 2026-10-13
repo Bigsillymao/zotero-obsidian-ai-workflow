@@ -1,0 +1,5 @@
+# normalize line endings across platforms
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.xpi binary
+*.png binary

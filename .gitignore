@@ -1,0 +1,20 @@
+# python
+__pycache__/
+*.py[cod]
+
+# generated test fixtures and conversion outputs
+skills/doc-to-md/tests/_fixtures/
+
+# local machine config (per-user; copy LOCAL-CONFIG.example.md to LOCAL-CONFIG.md)
+LOCAL-CONFIG.md
+
+# runtime logs
+skills/zotero-ops/bridge/*.log
+
+# editor / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# local backups
+*.bak-*
