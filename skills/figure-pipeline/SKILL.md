@@ -26,6 +26,16 @@ description: 科研出图与图件归档流水线：数据 → Origin 出图（o
 6. **关 Origin**：全部导出并核对后调 `origin_quit`（走进程终止；导出文件不受影响，内存项目会丢——务必确认图都已在磁盘）。
    ⚠ **例外**：该图还需要用户手动补样式（网格线 / 逐曲线颜色 / 标记形状 / 加粗等 COM 覆盖不到的部分）时**先别关**，等用户改完并导出
 
+## 模板路线（样式进阶，推荐）
+
+COM 覆盖不到的外观（逐曲线样式、网格线、图例框等）最稳的做法是**用 Origin 模板定义样式**，而不是每次手调：
+
+1. 从 [OriginLab Graph Gallery](https://www.originlab.com/www/products/GraphGallery.aspx) 检索并下载模板工程
+   （可装社区 Skill `origin-template` 自动化：`download_origin_templates.ps1 -SearchTerms "<关键词>" -OutputDir "<模板库>"`；来源示例 [GG-pro-viki/Origin](https://github.com/GG-pro-viki/Origin)——个人学习用途、无开源许可，自用可以，勿转发进公开仓库）
+2. 在 Origin 里打开模板 `.opj`/`.opju`，把中意的样式存为模板并套用到你的数据
+3. ⚠ **版本兼容**：低编号老模板多为 `.opj`（Origin 2017 可开，已实测成功渲染）；**`.opju` 需 Origin 2018+**
+4. ⚠ 脚本化打开工程（LabTalk `doc -o`）时，若当前项目有未保存修改会弹保存确认对话框卡死 COM——自动化打开前先处理未保存项目
+
 ## 版本差异（Origin）
 
 - 出图能力以 **origin-plot 技能 + origin MCP** 为准（含安装与排障说明）
