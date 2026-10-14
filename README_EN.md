@@ -20,7 +20,7 @@ knowledge base, plus two side pipelines — scientific plotting (Origin only) an
 | Topic collections      | <----| per skills in this repo | <----| index / log / conflicts     |
 +------------------------+  RPC +-------------------------+ link +-----------------------------+
         ZCode Bridge ---+                 ^ LabTalk/COM             +-- ZotMoov -> Raw/PDFs (read-only)
-                                     Origin plots -> PNG/PDF/TIF -> archive in 3 places
+                                     Best-tool plots -> PNG/PDF/TIF -> archive in 3 places
         PDF/docx/tables -- doc-to-md ---> Markdown -> AI reads (verify values in source files)
 ```
 
@@ -33,14 +33,14 @@ maintenance (literature operations, knowledge capture, plotting & archiving, for
 | --- | --- | --- | --- |
 | ① | Literature management | Full read/write of Zotero items / collections / tags / attachments (ZCode Bridge RPC); multi-source acquisition (Zotero Connector / Web of Science / CNKI / OA & document delivery); intake SOP | [`skills/zotero-ops/`](skills/zotero-ops/SKILL.md) |
 | ② | Knowledge capture | Obsidian vault upkeep: literature cards, concept pages, project pages; Ingest / Query / Lint / new-task flows; git commits | [`skills/vault-ops/`](skills/vault-ops/SKILL.md) |
-| ③ | Scientific plotting | Origin-only plotting (origin-plot MCP) → PNG/PDF/TIF → archive in three places + embed into the experiment page | [`skills/figure-pipeline/`](skills/figure-pipeline/SKILL.md) |
+| ③ | Scientific plotting | Best-tool plotting (Origin via origin-plot MCP / template route, or Python plotting libraries) → PNG/PDF/TIF → archive in three places + embed into the experiment page | [`skills/figure-pipeline/`](skills/figure-pipeline/SKILL.md) |
 | ④ | Format conversion | PDF / images / Office / spreadsheets → Markdown (always before reading) | [`skills/doc-to-md/`](skills/doc-to-md/SKILL.md) |
 | ⑤ | AI middle layer | Close reading & card writing, plotting & archiving, knowledge upkeep, experience summaries — carried out by the AI through the skills above | all of this repo |
 
 ## Global red lines
 
 1. **Numbers red line**: converted / excerpted text is for reading only; **data verification and final quoted values must be read from the original files (Excel etc.)**.
-2. **Origin red line**: every scientific figure is made in Origin — never matplotlib or similar.
+2. **Plotting toolkit**: Origin is no longer mandatory (as of 2026-10-14) — pick the best tool per task by ease of use and output quality (Origin, Python plotting libraries, or others).
 3. **Archiving red line**: every figure is archived in three places (project archive / `<projects>\<project>\figures\<type>\` / `<vault>\projects\<project>\attachments\`) and embedded; missing any one is not acceptable.
 4. **Experience-summary red line**: every task ends with a mandatory experience summary, routed by destination (AI memory system / vault / log).
 5. **git red line**: commit with `git -c user.name="<git-name>" -c user.email="<git-email>"` — **never modify the global git config**.

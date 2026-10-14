@@ -1,19 +1,19 @@
 ---
 name: figure-pipeline
-description: 科研出图与图件归档流水线：数据 → Origin 出图（origin-plot MCP，禁用 matplotlib）→ 导出 PNG/PDF/TIF → 三处归档（资料包原位 / 项目目录\图\类型\ / vault 项目\附件\）→ 试验页嵌入 + index/log/git → 关闭 Origin。当用户要求画图、出图、制备论文插图、归档或同步图件时使用。
+description: 科研出图与图件归档流水线：数据 → 择优出图（Origin/origin-plot MCP 或 Python 绘图库，按好用与效果选）→ 导出 PNG/PDF/TIF → 三处归档（资料包原位 / 项目目录\图\类型\ / vault 项目\附件\）→ 试验页嵌入 + index/log/git。当用户要求画图、出图、制备论文插图、归档或同步图件时使用。
 ---
 
 # 出图与归档流水线
 
 ## 红线
 
-- **一律 Origin**：走 origin-plot 技能与 origin MCP（`origin_plot` / `origin_export` / `origin_run_labtalk` / `origin_status` / `origin_doctor` / `origin_quit`），**不得用 matplotlib 等 Python 绘图库代画**
+- **工具择优（2026-10-14 起）**：绘图工具不限——Origin（origin-plot 技能与 MCP：`origin_plot` / `origin_export` / `origin_run_labtalk` / `origin_status` / `origin_doctor` / `origin_quit`，含模板路线）或 **Python 绘图库（matplotlib 等）** 都可以，**以“好用 + 出图质量好”为准**；不得再以“必须 Origin”为由拒绝其他工具
 - **三处归档，缺一不可**，且出图当次完成
 
 ## 流程
 
 1. **数据准备**：整理成 CSV（首行表头 = 轴标题与图例名，一个表头省掉一堆参数）；来源是 Excel 的数据**核校对原表**（数值红线）
-2. **出图**：`origin_plot(data_path=..., export_path=...)`；默认三格式导出
+2. **出图**：按选定工具执行——Origin 走 `origin_plot(data_path=..., export_path=...)`；Python 绘图库直接写脚本出图（注意中文字体）。默认三格式导出
    - `.png`（预览与 vault 嵌入）、`.pdf`（矢量，论文插图）、`.tif`（印刷）
 3. **核对**：`Read` 导出的 PNG **亲自看图**（老版本 Origin 的 Execute 返回值不可信），不对就修再导
 4. **归档三处**（同一文件名，逐处拷贝；各路径取值见 `LOCAL-CONFIG.md`）：
@@ -23,8 +23,8 @@ description: 科研出图与图件归档流水线：数据 → Origin 出图（o
    - ③ **vault**：`<vault>\项目\<项目名>\附件\`（当次拷入，不是可选项）
    - （表格等非图件交付物：进项目目录根 + vault `附件\`，不进 `图\`）
 5. **vault 嵌入**：对应试验子页用 `![[文件名.png]]` 嵌入 + 图注（批次、方法、绘图工具、其他格式位置）；同步 `index.md` 摘要 + `log.md` 追加一行 + git 提交（命令见 vault-ops）
-6. **关 Origin**：全部导出并核对后调 `origin_quit`（走进程终止；导出文件不受影响，内存项目会丢——务必确认图都已在磁盘）。
-   ⚠ **例外**：该图还需要用户手动补样式（网格线 / 逐曲线颜色 / 标记形状 / 加粗等 COM 覆盖不到的部分）时**先别关**，等用户改完并导出
+6. **收尾**：若用 Origin，全部导出并核对后调 `origin_quit`（走进程终止；导出文件不受影响，内存项目会丢——务必确认图都已在磁盘）。
+   ⚠ **例外**：该图还需要用户手动补样式时**先别关**，等用户改完并导出；若用 Python 绘图库出图则无此步
 
 ## 模板路线（样式进阶，推荐）
 

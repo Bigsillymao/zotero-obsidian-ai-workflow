@@ -19,7 +19,7 @@
 │ 主题 collections   │ ←───│                           │ ←───│ index·log·矛盾清单     │
 └────────────────────┘  RPC └───────────────────────────┘ 回链 └────────────────────────┘
         ZCode Bridge ──┘                ↑ LabTalk/COM                └─ ZotMoov → Raw/文献PDF（只读）
-                                    Origin 出图 ─→ PNG/PDF/TIF ─→ 三处归档
+                                    出图（择优）─→ PNG/PDF/TIF ─→ 三处归档
         PDF/docx/表格 ── doc-to-md ───→ Markdown ──→ AI 阅读（数值核校仍以原始文件为准）
 ```
 
@@ -31,14 +31,14 @@
 | --- | --- | --- | --- |
 | ① | 文献管理 | Zotero 条目/分类/标签/附件全量读写（ZCode Bridge RPC）；多源文献获取（Zotero Connector / Web of Science / 知网 / OA 与文献传递）；入库 SOP | [`skills/zotero-ops/`](skills/zotero-ops/SKILL.md) |
 | ② | 知识沉淀 | Obsidian vault 维护：文献卡片/概念页/项目页；Ingest / Query / Lint / 新任务；git 提交 | [`skills/vault-ops/`](skills/vault-ops/SKILL.md) |
-| ③ | 科研出图 | Origin-only 出图（origin-plot MCP）→ PNG/PDF/TIF → 三处归档 + 试验页嵌入 | [`skills/figure-pipeline/`](skills/figure-pipeline/SKILL.md) |
+| ③ | 科研出图 | 择优出图（Origin：origin-plot MCP / 模板路线；或 Python 绘图库）→ PNG/PDF/TIF → 三处归档 + 试验页嵌入 | [`skills/figure-pipeline/`](skills/figure-pipeline/SKILL.md) |
 | ④ | 格式转换 | PDF / 图片 / Office / 表格 → Markdown（读文档前必做） | [`skills/doc-to-md/`](skills/doc-to-md/SKILL.md) |
 | ⑤ | AI 中间层 | 精读写卡、出图归档、知识维护、经验总结——由 AI 按上述技能执行 | 本仓库全部 |
 
 ## 全局红线
 
 1. **数值红线**：转换 / 摘录出的文本只用于阅读；**数据校核、定案值引用必须回原始文件（Excel 等）读精确值**。
-2. **Origin 红线**：科研绘图一律用 Origin，不得用 matplotlib 等代画。
+2. **绘图工具**：不再强制 Origin（2026-10-14 变更）——按“好用 + 出图质量”择优（Origin / Python 绘图库 / 其他均可）。
 3. **归档红线**：每次出图三处归档（资料包原位 / `<项目目录>\<项目>\图\<类型>\` / `<vault>\项目\<项目>\附件\`）+ 嵌入 + git，缺一不可。
 4. **经验总结红线**：每个任务收尾必须做经验总结，按去向分流（AI 记忆 / vault / log）。
 5. **git 红线**：提交用 `git -c user.name="<git-name>" -c user.email="<git-email>"`，**不改动全局 git 配置**。

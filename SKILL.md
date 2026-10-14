@@ -13,7 +13,7 @@ description: 科研知识工作流总入口（Zotero + Obsidian + AI 中间层�
 │ 主题 collections   │ ←───│                           │ ←───│ index·log·矛盾清单     │
 └────────────────────┘  RPC └───────────────────────────┘ 回链 └────────────────────────┘
         ZCode Bridge ──┘                ↑ LabTalk/COM                └─ ZotMoov → Raw/文献PDF（只读）
-                                    Origin 出图 ─→ PNG/PDF/TIF ─→ 三处归档
+                                    出图（择优）─→ PNG/PDF/TIF ─→ 三处归档
         PDF/docx/表格 ── doc-to-md ───→ Markdown ──→ AI 阅读（数值核校仍以原始文件为准）
 ```
 
@@ -39,7 +39,7 @@ description: 科研知识工作流总入口（Zotero + Obsidian + AI 中间层�
 ## 全局红线（每次任务都适用）
 
 1. **数值红线**：转换 / 摘录出的文本只用于阅读；**数据校核、定案值引用必须回原始文件（Excel 等）读精确值**。
-2. **Origin 红线**：所有科研绘图一律用 Origin（origin-plot MCP），不得用 matplotlib 等代画。
+2. **绘图工具**：不再强制 Origin（2026-10-14 变更）——按“好用 + 出图质量”择优（Origin / Python 绘图库 / 其他均可）。
 3. **归档红线**：每次出图必须三处归档——资料包原位 + `<项目目录>\<项目>\图\<类型>\` + `<vault>\项目\<项目>\附件\`，并在试验页嵌入；同步 index/log + git。缺一不可。
 4. **经验总结红线**：每个任务收尾必须做经验总结（有效做法 / 踩坑与修复 / 迁移提示），按去向分流：工具·网络·自动化坑 → AI 记忆系统；领域知识与方法论 → vault；两条都追加 `log.md`。
 5. **git 红线**：知识库提交用 `git -c user.name="<git-name>" -c user.email="<git-email>" commit`（取值见 LOCAL-CONFIG），**不改动全局 git 配置**——每台机器既有的协作身份不受影响。
